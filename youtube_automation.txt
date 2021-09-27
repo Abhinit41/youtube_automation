@@ -1,0 +1,108 @@
+import pyautogui as pg
+import time
+from tkinter import *
+import webbrowser
+import tkinter.messagebox as tmsg
+
+
+#webbrowser.open("www.youtube.com")
+#(pg.position())
+
+def destroy():
+    root.destroy()
+
+def goo():
+    if episode_value.get()=="":
+        tmsg.showinfo("Error","Please Enter The Episode no.")
+
+    else:
+        webbrowser.open("www.youtube.com")
+        time.sleep(15)
+        pg.moveTo(435,97)
+        pg.click(435,97)
+        pg.typewrite("Porous Episode  ")
+        pg.moveTo(455, 97)
+        pg.click(455, 97)
+        pg.typewrite(episode_value.get())
+        pg.typewrite(["Enter"])
+        time.sleep(5)
+        pg.moveTo(404, 296)
+        pg.click(404, 296)
+        time.sleep(5)
+        pg.moveTo(857,608)
+        pg.click(857,608)
+
+
+
+def go(event):
+    if episode_value.get()=="":
+        tmsg.showinfo("Error","Please Enter The Episode no.")
+
+    else:
+        webbrowser.open("www.youtube.com")
+        time.sleep(15)
+        pg.moveTo(435,97)
+        pg.click(435,97)
+        pg.typewrite("Porous Episode  ")
+        pg.moveTo(455, 97)
+        pg.click(455, 97)
+        pg.typewrite(episode_value.get())
+        pg.typewrite(["Enter"])
+        time.sleep(5)
+        pg.moveTo(404, 296)
+        pg.click(404, 296)
+        time.sleep(5)
+        pg.moveTo(857,608)
+        pg.click(857,608)
+
+
+
+
+
+
+
+
+root=Tk()
+
+root.geometry("600x500+750+0")
+root.maxsize(600,500)
+root.minsize(600,500)
+root.title("Dad's Porous Software")
+root.wm_iconbitmap("porous.ico")
+
+f=Frame(root,bg="yellow",borderwidth=7,relief=SUNKEN)
+f.pack()
+
+l=Label(f,text="                     Welcome Dad                     ",font="lucida 25 bold",bg="yellow",fg="red")
+
+
+l.pack()
+
+
+
+l1=Label(root,text="Enter The Episode number Of Porous",font="lucida 15 bold",fg="blue")
+l1.place(x=0,y=150)
+l1=Label(root,text="Make sure there is no any application opened on the screeen",fg="blue")
+l1.place(x=0,y=450)
+l1=Label(root,text="Don't try to maximize the application",fg="blue")
+l1.place(x=0,y=470)
+
+episode_value=StringVar()
+episode_entry=Entry(root,textvariable=episode_value,width=35)
+episode_entry.place(x=380,y=154)
+
+
+b1=Button(root,text="Go To Episode",font="lucida 15 bold",bg="red",fg="yellow",command=goo)
+b1.place(x=170,y=190)
+root.bind('<Return>',go)
+
+b2=Button(root,text="   Cancel   ",font="lucida 15 bold",bg="red",fg="yellow",command=destroy)
+b2.place(x=350,y=190)
+
+
+
+
+
+
+
+root.mainloop()
